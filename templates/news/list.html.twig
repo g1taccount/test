@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello NewsController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .news-block { border: 1px solid #7e7e7e; padding: 5px; margin-bottom: 15px; }
+    button {
+        background-color: #6bd6ff;
+        border: none;
+        color: white;
+        outline: none;
+        cursor: pointer;
+        font: inherit;
+        padding: 10px;
+        margin: 10px;
+        font-weight: bold;
+        border-radius: 3px;
+    }
+</style>
+
+<div class="example-wrapper">
+    <h1>Список новостей</h1>
+
+    {% for news in newsList %}
+        <div class="news-block">
+            <h3>{{ news.title }}</h3>
+
+            <p>{{ short(news.description) }}</p>
+
+            <a href="{{ path('news_view', {id: news.id}) }}">
+                <button>Подробнее</button>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

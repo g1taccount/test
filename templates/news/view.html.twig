@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello NewsController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+</style>
+
+<div class="example-wrapper">
+    <a href="/">Список новостей</a>
+
+    <h1>{{ news.title }}</h1>
+    <p>
+        <b>{{ news.category }}</b>
+    </p>
+    <p>
+        <i>{{ news.dateTime|date('Y-m-d H:i:s') }}</i>
+    </p>
+    {% if news.subtitle %}
+        <h3>{{ news.subtitle }}</h3>
+    {% endif %}
+    {% if news.image %}
+        <img width="500px" height="auto" src="{{ news.image }}"/>
+    {% endif %}
+    <p>{{ news.description|raw }}</p>
+</div>
+{% endblock %}
